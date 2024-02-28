@@ -1,0 +1,109 @@
+
+
+@media (max-width: 992px) {
+    .main-cover{
+        display:none;
+    }
+    
+}
+
+.main-cover{
+    position: relative;
+}
+
+.main-cover::after{
+    content: "";
+    background: linear-gradient(-6deg, rgba(0,0,0,0.65) 0%, rgba(255,255,255,0) 45%, rgba(255,255,255,0) 100%);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    opacity:0;
+    transition:opacity 0.4s ease-in-out;
+}
+
+.main-cover:hover::after{
+    opacity:1;
+}
+
+.text_caption {
+    position:absolute;
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: 20px;
+    word-spacing: 5px;
+    bottom: 8%;
+    right:34vw;
+    padding: 1.5rem;
+    background-color: rgb(220, 202, 175);
+    border-radius: 51%;
+    transition: all 0.4s ease-in-out;
+    z-index: 5;
+}
+
+.text_caption a {
+    text-decoration:none;
+    color: whitesmoke;
+}
+
+.text_caption:hover{
+    background-color: rgb(178, 156, 140);
+    transform:scale(1.2);
+}
+
+#media_icons{
+    position:absolute;
+    bottom: 7%;
+    right: 6%;
+    z-index: 5;
+}
+
+#media_icons > a{
+    margin-right: 1vw;
+}
+
+#media_icons > a > img{
+    max-height: 80px;
+    width:auto;
+    transition: transform 0.3s ease-in-out;
+}
+#media_icons img:hover{
+    transform:scale(1.2);
+}
+
+
+.juzcookie-intro-icon{
+    background-color: rgba(255, 255, 255, 0.8);
+    color: rgb(189, 105, 36);
+    font-size: 1.5rem;
+    margin: 6.5vh auto 7vh;
+    border: 5px double;
+}
+
+div#about_juzcookies {
+    border: 2px solid orange;
+    background-color: rgba(255, 255, 255, 0.8);
+    text-align: justify;
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
+
+
+.review-header::before{
+    content: "";
+    background-image: url(../Images/starfish_icon.png);
+    background-size: cover; /* Adjust the size of the background image */
+    width: 50px; /* Set the width of the pseudo-element */
+    height: 50px; /* Set the height of the pseudo-element */
+    display: inline-block; /* Ensure the pseudo-element behaves like an inline element */
+    margin-left: 2vw; /* Adjust margin */
+}
+
+.review-header::after{
+    content: "";
+    background-image: url(../Images/starfish_icon.png);
+    background-size: cover; /* Adjust the size of the background image */
+    width: 50px; /* Set the width of the pseudo-element */
+    height: 50px; /* Set the height of the pseudo-element */
+    display: inline-block; /* Ensure the pseudo-element behaves like an inline element */
+}

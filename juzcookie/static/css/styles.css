@@ -1,0 +1,29 @@
+::selection{
+    color:rgb(252, 218, 176);
+    background-color: rgb(167, 97, 167);
+}
+::-webkit-scrollbar{
+    width:10px;
+}
+
+::-webkit-scrollbar-track{
+    background-color: bisque;
+}
+
+::-webkit-scrollbar-thumb{
+    background: rgb(184, 116, 34);     
+    border-radius: 5px;  
+}
+
+.nav-link:hover{
+    color: rgb(255, 220, 184);
+}
+
+
+@media (min-width: 992px) {
+
+    .navbar-nav .nav-item .navicons{
+        display:none;
+    }
+
+}

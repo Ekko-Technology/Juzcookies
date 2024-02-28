@@ -1,0 +1,19 @@
+.cake_cover_page{
+    background-image: linear-gradient(0deg, rgba(206, 159, 88, 0.3) 0%, rgba(0,0,0,0.35) 45%, rgba(206, 159, 88, 0.3) 100%), url(../Images/cake_cover_page_screenshot.jpg);
+    background-repeat: no-repeat;
+    background-position: middle;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 600px;
+}
+
+.cake_cover_page #cake_title{
+    text-align: center;
+    color: rgb(228, 189, 196);
+    font: 60px bolder;
+    font-family: cursive;
+    letter-spacing: 7px;
+    text-shadow: 0 0 10px #9f2437;
+}

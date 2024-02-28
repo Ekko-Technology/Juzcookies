@@ -1,0 +1,135 @@
+{% extends 'layout.html' %}
+
+{% block static %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/cart.css' %}">
+    <script>
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        const csrftoken = getCookie('csrftoken');
+    </script>
+    <script src="{% static 'js/cart.js' %}"></script>
+    
+{% endblock %}
+
+{% block content %}
+<div class="container cart-container">
+    <h1 class="mt-4 mb-3">
+        {% load static %}
+        Cart Items
+        <img src="{% static 'images/cart.png' %}" width="45px" class="mr-2">
+    </h1>
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="card mb-4">
+          <div class="card-header  fs-5">
+            Your Items
+            <img src="{% static 'images/list_icon.gif' %}" width="35px" class="mr-2" style="float: right;">
+          </div>
+          <div class="card-body">
+            <div class="row inner-cart-header">
+                <div class="col-3"></div>
+                <div class="col-3">Item</div>
+                <div class="col-2">Price</div>
+                <div class="col-2">Quantity</div>
+                <div class="col-2 text-center">Total</div>
+            </div>
+            <!-- Display user's items here -->
+            <ul class="list-group">
+            {% if user.is_authenticated %}
+                {% if orders %}
+                    {% for order in orders %}
+                        {% if order.cake %}
+                            <li class="list-group-item d-flex align-items-center text-center item-index">
+                                <div class="col-2 text-start"><img src="/media/{{ order.cake.image }}" width="60px"></div>
+                                <div class="col-4 text-start">{{ order.cake.title }}</div>
+                                <div class="col-2 text-start">$<span class="item-price">{{ order.cake.price }}</span></div>
+                                <div class="col-2 responsive-quantity-value">
+                                    <button class="btn btn-sm quantity-down" style="vertical-align: baseline;">-</button>
+                                    <span class="bg-light quantity-bought">
+                                        {{ order.quantity }}
+                                    </span>
+                                    <button class="btn btn-sm quantity-up" style="vertical-align: baseline;">+</button>
+                                </div>
+                                <div class="col-2 text-end"><span class="bg-light total-amount">Total</span></div>
+                            </li>
+                        {% elif order.pastry %}
+                        <li class="list-group-item d-flex align-items-center text-center item-index">
+                            <div class="col-2 text-start"><img src="/media/{{ order.pastry.image }}" width="60px"></div>
+                            <div class="col-4 text-start">{{ order.pastry.title }}</div>
+                            <div class="col-2 text-start">$<span class="item-price">{{ order.pastry.price }}</span></div>
+                            <div class="col-2 responsive-quantity-value">
+                                <button class="btn btn-sm quantity-down" style="vertical-align: baseline;">-</button>
+                                <span class="bg-light quantity-bought">
+                                    {{ order.quantity }}
+                                </span>
+                                <button class="btn btn-sm quantity-up" style="vertical-align: baseline;">+</button>
+                            </div>
+                            <div class="col-2 text-end"><span class="bg-light total-amount">Total</span></div>
+                        </li>
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+                <hr>
+                    <h3 class="text-center">No Orders Yet</h3>
+                {% endif %}
+            {% else %}
+            <!-- display screen for guest -->
+                {% if orders %}
+                    {% for product_id, order in orders.items %}
+                        <li class="list-group-item d-flex align-items-center text-center item-index">
+                            <div class="col-2 text-start"><img src="{{ order.image }}" width="60px"></div>
+                            <div class="col-4 text-start">{{ order.name }}</div>
+                            <div class="col-2 text-start">$<span class="item-price">{{ order.price }}</span></div>
+                            <div class="col-2 responsive-quantity-value">
+                                <input type="hidden" name="product-id" value="{{ product_id }}" class="visually-hidden product-id">
+                                <button class="btn btn-sm quantity-down" style="vertical-align: baseline;">-</button>
+                                <span class="bg-light quantity-bought">{{ order.quantity }}</span>
+                                <button class="btn btn-sm quantity-up" style="vertical-align: baseline;">+</button>
+                            </div>
+                            <div class="col-2 text-end"><span class="bg-light total-amount">Total</span></div>
+                        </li>
+                    {% endfor %}
+                {% else %}
+                    <hr>
+                    <h3 class="text-center">No Orders Yet</h3>
+                {% endif %}           
+            {% endif %}
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card mb-4">
+          <div class="card-header fw-bold">
+            Cart Summary
+          </div>
+          <div class="card-body">
+            <!-- Display cart summary here -->
+            <p>Total Items: 
+                <span class="badge bg-light text-reset fs-6 total-quantity"></span>
+            </p>
+            <p>Total Price: 
+                <span class="badge bg-light text-reset fs-6 total-price"></span>
+            </p>
+            <a href="{% url 'pastries' %}" class="btn btn-outline-dark my-2">&#x2190;Continue Shopping</a>
+            <a href="#" class="btn btn-outline-primary m-2 px-4 btn-checkout">Checkout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

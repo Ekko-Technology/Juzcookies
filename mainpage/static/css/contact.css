@@ -1,0 +1,64 @@
+.contactus_cover_page{
+    background-image: linear-gradient(0deg, rgba(133,80,0,0.3) 0%, rgba(0,0,0,0.35) 45%, rgba(133,80,0,0.3) 100%), url(../Images/contactus_coverpage.jpg);
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 550px;
+}
+
+.contactus_cover_page #contactus_title{
+    text-align: center;
+    color: rgb(228, 189, 196);
+    font: 60px bolder;
+    font-family: cursive;
+    letter-spacing: 7px;
+    text-shadow: 0 0 10px #9f2437;
+}
+
+.contactus_container{
+    width:100%;
+    padding: 10vh 10vw;
+    margin: 0 auto;
+    background-color: beige;
+    border: 3px solid #888;
+}
+
+.juzcookies_particulars{
+    background-image: url(http://www.bambinilaffare.com/images/contact/info-bg.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: relative;
+    overflow: visible;
+    padding: 4%;
+    margin:0 5% 0 -6%;
+    color: rgb(4, 112, 226);
+}
+
+.juzcookies_particulars li h3{
+    font-weight:bolder;
+}
+
+.juzcookies_particulars li{
+    list-style: none;
+}
+
+#location_icon{
+    display:inline-block;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s;
+}
+
+#location_icon:hover{
+    color: plum;
+    transform: translateX(50px)
+}
+
+.juzcookies_particulars #location_icon::before {
+    content: url(../images/location_icon.png);
+    float:left;
+    margin: 15px 10px 0 0;
+}

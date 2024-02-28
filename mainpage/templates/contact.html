@@ -1,0 +1,55 @@
+{% extends 'layout.html' %}
+
+{% block static %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/contact.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="contactus_cover_page">
+    <div id="contactus_title">
+        <p>
+            Contact <br> Us
+        </p>
+    </div>
+</div>
+<div class="contactus_container">
+    <div class="row">
+        <div class="col-12" style="font-family: cursive;">
+            <div class="textbox">
+                <p>Reach out to us at: <br>
+                    <a href="tel:+6591460070">+65 91460070</a><br>
+                    <a href="mailto:Juzcookies@yahoo.com.sg">Juzcookies@yahoo.com.sg</a>
+                </p>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="juzcookies_particulars">
+                <ul>
+                    <li>
+                        <h3>Call Us</h3>
+                        <div id="call_us">
+                            <img src="{% static 'images/Phone_icon.png' %}" alt="" width="40px">
+                            <span>+65 9146 0700</span>
+                            <a href="https://www.instagram.com/juzcookies/">
+                                <img src="{% static 'images/instagram_icon.png' %}" alt="instagram" class="instagram_icon mx-3" style="width: 45px;">
+                            </a>
+                        </div>
+                        <h3>Location</h3>
+                        <p>
+                            <a href="https://www.google.com/maps/place/629+Aljunied+Rd,+%2306+05,+Singapore+389838/@1.3263134,103.8770921,17z/data=!3m1!4b1!4m5!3m4!1s0x31da1827fff6b091:0x6645832b07ed2d1!8m2!3d1.326308!4d103.879667?entry=ttu" id="location_icon" target="_blank">
+                                629 Aljunied Road, #06-05<br>
+                                Cititech Industrial Building,<br>
+                                Singapore 389838
+                            </a>
+                        </p>
+                        <h3>Business Hours</h3>
+                        <span>Mon - Fri .... 9am - 6pm</span><br>
+                        <span style="color:crimson">Sat, Sun .... Closed</span> 
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

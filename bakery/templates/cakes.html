@@ -1,0 +1,99 @@
+{% extends 'layout.html' %}
+
+{% block static %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/cakes.css' %}">
+    <script src="{% static 'js/pastries.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+
+<div class="cake_cover_page">
+    <div id="cake_title">
+        <p>
+            Juz <br> Cakes
+        </p>
+    </div>
+</div>
+
+<div class="container mt-4">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-5">
+        {% for cake in cakes %}
+        <div class="col">
+            <div class="card">
+                <img src="{{cake.image.url}}" class="card-img-top img-thumbnail" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        {{ cake.title }} 
+                        {% if cake.new == True %}
+                            <span class="badge badge-sm rounded-pill text-bg-info" style="font-weight: normal;">New</span>
+                        {% endif %}
+                        {% if cake.bestseller == True %}
+                            <span class="badge badge-sm rounded-pill text-bg-warning text-reset" style="font-weight: normal;">Bestseller</span>
+                        {% endif %}
+                        {% if cake.sold_out == True %}
+                            <span class="badge badge-sm rounded-pill text-bg-danger text-reset" style="font-weight: normal;">Sold out</span>
+                        {% endif %}
+                    </h5>
+                    
+                    <hr>
+
+                    {% if cake.description %}
+                        <p class="card-text">{{ cake.description }}</p>
+                    {% endif %}
+
+                    <button class="btn btn-outline-primary add-btn" data-bs-toggle="modal" data-bs-target="#staticMiddle{{ cake.id }}">Add to Cart</button>
+
+                    <!-- modal -->
+                    <div class="modal fade" id="staticMiddle{{ cake.id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">{{cake.title}}</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="card">
+                                        <div class="row g-0">
+                                            <div class="col-md-6">
+                                                <img src="{{ cake.image.url }}" class="img-fluid rounded-start" alt="{{cake.title}}">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="card-body">
+                                                    <h5 class="card-title mb-4">
+                                                        {{ cake.title }}
+                                                    </h5>
+                                                    <p class="card-text mb-4">{{ cake.modal_description|safe }}</p>
+                                                    <div class="card-text fw-bold mt-4">
+                                                        ${{ cake.price }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <form method="post" style="margin: 0;">
+                                    <div class="modal-footer">
+                                        {% csrf_token %}
+                                        <div class="input-group" style="width: 30%;">
+                                            <input type="hidden" name="cake-id" value="{{ cake.id }}">
+                                            <button class="btn btn-outline-secondary minus-btn" type="button">-</button>
+                                            <input type="text" class="form-control form-control-sm text-center quantity-input" value="1" name="quantity">
+                                            <button class="btn btn-outline-secondary plus-btn" type="button">+</button>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Add To Cart</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h5 style="display: inline-block; float:right;"> ${{ cake.price }}</h5>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
