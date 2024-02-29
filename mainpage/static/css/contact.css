@@ -1,5 +1,5 @@
 .contactus_cover_page{
-    background-image: linear-gradient(0deg, rgba(133,80,0,0.3) 0%, rgba(0,0,0,0.35) 45%, rgba(133,80,0,0.3) 100%), url(../Images/contactus_coverpage.jpg);
+    background-image: linear-gradient(0deg, rgba(133,80,0,0.3) 0%, rgba(0,0,0,0.35) 45%, rgba(133,80,0,0.3) 100%), url(../images/contactus_coverpage.jpg);
     background-repeat: no-repeat;
     background-position: bottom;
     background-size: cover;
