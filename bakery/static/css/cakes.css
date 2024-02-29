@@ -1,5 +1,5 @@
 .cake_cover_page{
-    background-image: linear-gradient(0deg, rgba(206, 159, 88, 0.3) 0%, rgba(0,0,0,0.35) 45%, rgba(206, 159, 88, 0.3) 100%), url(../Images/cake_cover_page_screenshot.jpg);
+    background-image: linear-gradient(0deg, rgba(206, 159, 88, 0.3) 0%, rgba(0,0,0,0.35) 45%, rgba(206, 159, 88, 0.3) 100%), url(../images/cake_cover_page_screenshot.jpg);
     background-repeat: no-repeat;
     background-position: middle;
     background-size: cover;
