@@ -40,7 +40,6 @@ def pastries(request):
 
 
 
-
 def cakes(request):
     cakes = Cakes.objects.all()
     if request.method == 'GET':
